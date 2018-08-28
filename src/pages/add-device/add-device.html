@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar color="secondary" >
+    <ion-title>Add Device</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only clear   (click)="quit()"><ion-icon ios="ios-close" md="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <form  [formGroup]="device" (ngSubmit)="formSubmit(device)">
+    <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text"  formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>Serial Number</ion-label>
+          <ion-input type="text"  formControlName="serial"></ion-input>
+        </ion-item>
+        <ion-item>
+
+        </ion-item>
+        <ion-item>
+          <ion-label>Category</ion-label>
+          <ion-select  formControlName="categoryId">
+            <ion-option *ngFor="let cat of categoryList" [value] = "cat.id" >{{cat.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+
+        <input type="file" (change)="onSelectFile($event)">
+        <button ion-button block type="submit" [disabled]="device.invalid">Add</button>
+
+      </form>
+</ion-content>

@@ -1,0 +1,37 @@
+<!--
+  Generated template for the UpdateDevicePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Update Device</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="device.name"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>Serial Number</ion-label>
+          <ion-input type="text" [(ngModel)]="device.serial"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Category</ion-label>
+          <ion-select [(ngModel)]="device.category">
+            <ion-option *ngFor="let cat of categoryList" [value] = "cat.id"  >{{cat.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+
+        <button ion-button block (click)="update()">Update</button>
+
+</ion-content>

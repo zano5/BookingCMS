@@ -1,3 +1,87 @@
 page-home {
 
+
+
+
+  #login {
+
+    background: url(../../assets/imgs/theme.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#card {
+    background: white;
+    padding: 40px;
+    width: 350px;
+    opacity: 0.8;
+    filter: alpha(opacity=50);
+    color:black;
+}
+
+#card #title {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#card .subtitle {
+    color: #a0a0a0;
+    margin-bottom: 40px;
+}
+
+#card input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    background: #eeeeee;
+    border-style: none;
+}
+
+#card .headings {
+    color: gray;
+}
+
+
+
+#card .error {
+    border-style: solid;
+    border-color: red;
+    border-width: 1px;
+}
+
+#card .failed {
+    color: red;
+}
+
+
+ion-item:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+
+
+
+  ion-item {
+    border-radius: 30px !important;
+    padding-left: 30px !important;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    border: 1px solid #ffffff;
+    border-bottom: 0px !important;
+    box-shadow: none !important;
+}
+
+
 }

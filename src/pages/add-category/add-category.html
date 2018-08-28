@@ -1,0 +1,30 @@
+<!--
+  Generated template for the AddCategoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Add Category</ion-title>
+
+
+    <ion-buttons start>
+        <button ion-button icon-only clear   (click)="quit()">end</button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>Category Name</ion-label>
+    <ion-input [(ngModel)]="catergory.name"></ion-input>
+  </ion-item>
+
+  <button ion-button full (click)="addCategory()">Add catergory</button>
+
+</ion-content>
