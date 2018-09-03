@@ -35,7 +35,7 @@ export class BookingProvider {
   }
 
 
-  addDevice(data) {
+  addDevice(data,alertCtrl,title) {
 
 var value;
 
@@ -44,11 +44,26 @@ var value;
     }else if(data.available =='no'){
       value=false;
     }
-    var header = { "headers": {"Content-Type": "application/json"} };
+    // var header = { "headers": {"Content-Type": "application/json"} };
 
-    this.http.post(this.apiUrl+'/devices',{categoryId:data.categoryId,name:data.name,serial:data.serial,available:true}, header).subscribe(data=>{
-      console.log(data);
-    })
+    // this.http.post(this.apiUrl+'/devices',{categoryId:data.categoryId,name:data.name,serial:data.serial,available:true,deviceTypeId: data.deviceTypeId }, header).subscribe(data=>{
+    //   console.log(data);
+    // })
+    var header = { "headers": {"Content-Type": "application/json"} };
+    return new Promise((resolve, reject) => {
+      this.http.post(this.apiUrl+'/devices', JSON.stringify({categoryId:data.categoryId,name:data.name,serial:data.serial,available:true,deviceTypeId: data.deviceTypeId}),header)
+        .subscribe(res => {
+          resolve(res);
+
+          this.presentDevice(data,alertCtrl,title);
+
+
+
+
+        }, (err) => {
+          reject(err);
+        });
+    });
   }
 
 
@@ -151,6 +166,70 @@ var value;
     });
 
   }
+
+
+  getDeviceTypes()
+  {
+    return this.http.get(this.apiUrl+'/devicetypes?{"$sort":{"name":1}}');
+  }
+
+
+  addDeviceTypes(data,alertCtrl)
+  {
+
+    var header = { "headers": {"Content-Type": "application/json"} };
+    return new Promise((resolve, reject) => {
+      this.http.post(this.apiUrl+'/devicetypes', JSON.stringify({name:data}),header)
+        .subscribe(res => {
+          resolve(res);
+
+         this.presentDeviceType(data,alertCtrl);
+
+
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+
+  presentDeviceType(device, alertCtrl) {
+    let alert = alertCtrl.create({
+      title: 'Device Type ',
+      subTitle: 'Device Type: '+device + ' Added' ,
+      buttons:[{
+
+        text: 'Dismiss',
+        role: '',
+        handler: () => {
+
+
+
+        },
+      }]
+    });
+    alert.present();
+  }
+
+  presentDevice(device,alertCtrl,title){
+
+    let alert = alertCtrl.create({
+      title: title,
+      subTitle: 'Device: '+device.name + title ,
+      buttons:[{
+
+        text: 'Dismiss',
+        role: '',
+        handler: () => {
+
+
+
+        },
+      }]
+    });
+    alert.present();
+  }
+
 
 
 }

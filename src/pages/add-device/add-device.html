@@ -36,6 +36,14 @@
         </ion-item>
 
 
+        <ion-item>
+            <ion-label>Device Type</ion-label>
+            <ion-select  formControlName="deviceTypeId">
+              <ion-option *ngFor="let dev of deviceTypeList" [value] = "dev.id" >{{dev.name}}</ion-option>
+            </ion-select>
+          </ion-item>
+
+
         <input type="file" (change)="onSelectFile($event)">
         <button ion-button block type="submit" [disabled]="device.invalid">Add</button>
 

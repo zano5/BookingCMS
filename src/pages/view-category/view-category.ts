@@ -79,7 +79,7 @@ export class ViewCategoryPage {
 
   end(){
 
-    this.navCtrl.setRoot('CatPage');
+    this.navCtrl.pop();
 
   }
 

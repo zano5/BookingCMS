@@ -39,9 +39,32 @@
        <ion-list>
 
 
+        <ion-row   class ="border">
+          <ion-col col-6>Device Name</ion-col>
+
+
+          <ion-col col-2>
+            <ion-col>Update</ion-col>
+          </ion-col>
+
+
+          <ion-col col-2>
+            <ion-col>Delete</ion-col>
+          </ion-col>
+
+
+          <ion-col col-2>
+            <ion-col>View</ion-col>
+          </ion-col>
+        </ion-row>
+
+
+
+
 
 
           <ion-row *ngFor="let cat of categoryList">
+
 
 
 
@@ -58,7 +81,7 @@
 
                 <button   clear (click)="update(cat)">
                     <ion-icon ios="ios-create" md="md-create"  color="primary" ></ion-icon>
-                   Update
+
                   </button>
 
             </ion-col>
@@ -67,9 +90,9 @@
             <ion-col col-2>
 
 
-                <button   clear (click)="delete(cat)">
+                <button   clear (click)="presentAlert(cat)">
                     <ion-icon ios="ios-trash" md="md-trash"  color="danger" ></ion-icon>
-                    Delete</button>
+                    </button>
 
             </ion-col>
 
@@ -78,7 +101,7 @@
 
                 <button    clear (click)="view(cat)">
                     <ion-icon ios="ios-eye" md="md-eye"  color="secondary" ></ion-icon>
-                    View</button>
+                    </button>
 
             </ion-col>
           </ion-row>

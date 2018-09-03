@@ -4,4 +4,5 @@ interface Device{
   available:string;
   image:string;
   categoryId:string;
+  deviceTypeId:string;
 }

@@ -65,12 +65,19 @@
                   <b>Category</b>
                 </ion-list-header>
 
-              <ion-item *ngFor="let cat of catergory">
-
-                {{cat.name}}
 
 
-              </ion-item>
+                  <button ion-item *ngFor="let cat of catergory" (click)="itemSelected(cat)">
+
+
+                      {{cat.name}}
+
+
+                    </button>
+
+
+
+
 
 
 
@@ -137,18 +144,19 @@
 
 
                 <div *ngIf="booking.approved == false">
-                    <button ion-button  clear   (click)="presentAlert(booking)"> <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>Accept</button>
+                    <button ion-button  clear   (click)="presentAlert(booking)"> <ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon>
+                    </button>
                 </div>
 
                 <div *ngIf="booking.approved == true">
-                    <button ion-button clear   (click)="presentAlert(booking)" color="secondary"><ion-icon ios="ios-close" md="md-close"></ion-icon>Cancel</button>
+                    <button ion-button clear   (click)="presentAlert(booking)" color="secondary"><ion-icon ios="ios-close" md="md-close"></ion-icon></button>
                 </div>
 
                </ion-col>
 
                <ion-col  col-2>
 
-                      <button ion-button  clear   (click)="presentAlert(booking)" color="danger">   <ion-icon ios="ios-trash" md="md-trash"></ion-icon>Disapprove</button>
+                      <button ion-button  clear   (click)="presentAlert(booking)" color="danger">   <ion-icon ios="ios-trash" md="md-trash"></ion-icon></button>
 
                </ion-col>
 

@@ -32,7 +32,8 @@ export class AddDevicePage {
     serial:'',
     categoryId:'',
     image:'',
-    available:''
+    available:'',
+    deviceTypeId:''
 
 
   }
@@ -42,6 +43,10 @@ export class AddDevicePage {
   device: FormGroup;
 
   categoryList;
+
+
+  deviceTypeList;
+
 
 
 
@@ -60,7 +65,7 @@ export class AddDevicePage {
       name:['',[Validators.required]],
       serial:['',[Validators.required]],
       categoryId:['',[Validators.required]],
-
+      deviceTypeId:['',[Validators.required]],
       image:[]
 
   });
@@ -68,6 +73,14 @@ export class AddDevicePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddDevicePage');
+
+
+    this.booking.getDeviceTypes().subscribe(data=>{
+
+      this.deviceTypeList = data;
+
+
+    })
 
     this.booking.getCategory().subscribe(data=>{
       this.categoryList = data;
@@ -92,6 +105,9 @@ export class AddDevicePage {
     this.dev.serial = value.serial;
     this.dev.categoryId= value.categoryId;
     this.dev.image = this.downloadUrl;
+    this.dev.deviceTypeId = value.deviceTypeId;
+
+
 
 
     console.log(value);
@@ -105,10 +121,10 @@ export class AddDevicePage {
 
     //this.booking.addDevice(this.dev);
 
-    this.booking.addDevice(this.dev);
-    this.presentAlert();
+    this.booking.addDevice(this.dev,this.alertCtrl,"Added");
+    //this.presentAlert();
 
-    this.device.reset();
+    //this.device.reset();
 
 
   }

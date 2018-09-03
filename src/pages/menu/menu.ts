@@ -29,6 +29,7 @@ export class MenuPage {
       { title: 'Category',icon: 'albums', component: 'CatPage' },
       { title: 'Devices',icon:'phone-portrait', component: 'ViewDevicePage'},
       {title: 'Bookings',icon:'book',component:'BookingPage'},
+      {title: 'Types of Devices',icon:'phone-portrait',component:'DeviceTypePage'},
       {title: 'Users',icon:'person',component:'ViewUsersPage'}
 
 

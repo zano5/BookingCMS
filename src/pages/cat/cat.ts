@@ -1,6 +1,6 @@
 import { BookingProvider } from '../../providers/booking/booking';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController ,MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController ,MenuController, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the CatPage page.
@@ -20,7 +20,7 @@ export class CatPage {
   deviceList;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private booking: BookingProvider,public modalCtrl: ModalController, private menu : MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private booking: BookingProvider,public modalCtrl: ModalController, private menu : MenuController, private alertCtrl : AlertController) {
 
 
 
@@ -51,7 +51,7 @@ export class CatPage {
   AddCatergory(){
 
 
-    var deviceModal = this.modalCtrl.create("AddCategoryPage");
+    var deviceModal = this.modalCtrl.create("AddCategoryPage", { parentPage: this});
    deviceModal.present();
 
 
@@ -64,19 +64,15 @@ export class CatPage {
 
 
 
-    var  deviceModal = this.modalCtrl.create("UpdateCategoryPage",{cat:category});
+
+    var  deviceModal = this.modalCtrl.create("UpdateCategoryPage",{cat:category, parentPage: this });
    deviceModal.present();
 
 
 
 
 
-   this.categoryList =[];
 
-   this.booking.getCategory().subscribe(data=>{
-
-     this.categoryList = data;
-   })
 
 
 
@@ -88,15 +84,10 @@ export class CatPage {
 
     this.booking.deleteCategory(category);
 
-    this.navCtrl.setRoot('CatPage');
+   this.someFnToUpdateParent();
 
 
-    this.categoryList =[];
 
-    this.booking.getCategory().subscribe(data=>{
-
-      this.categoryList = data;
-    })
 
 
 
@@ -134,6 +125,49 @@ export class CatPage {
 
 
 
+  someFnToUpdateParent()
+{
+
+  this.categoryList=[];
+  this.booking.getCategory().subscribe(data=>{
+
+    this.categoryList = data;
+
+  })
+}
+
+
+presentAlert(category) {
+  let alert = this.alertCtrl.create({
+    title: 'Delete',
+    subTitle: 'Do you want to delete',
+    buttons: [
+      {
+        text: 'Yes',
+        role: '',
+        handler: () => {
+
+
+          this.delete(category);
+
+          this.someFnToUpdateParent();
+
+
+        },
+
+      },{
+        text: 'cancel',
+        role: 'role',
+        handler: () => {
+
+
+
+        }
+      }
+        ]
+  });
+  alert.present();
+}
 
 
 }

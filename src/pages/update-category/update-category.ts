@@ -38,7 +38,8 @@ export class UpdateCategoryPage {
     this.booking.updateCategory(this.catergory);
 
 
-    this.navCtrl.push('CatPage');
+    this.navParams.get("parentPage").someFnToUpdateParent();
+    this.navCtrl.pop();
 
 
 

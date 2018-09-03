@@ -23,7 +23,11 @@ export class AddCategoryPage {
 
   };
 
+
+  state;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private booking : BookingProvider,public modalCtrl: ModalController) {
+
 
   }
 
@@ -33,16 +37,24 @@ export class AddCategoryPage {
 
   quit(){
 
-    this.navCtrl.setRoot('ViewDevicePage');
+
+
+    this.navParams.get("parentPage").someFnToUpdateParent();
+
+
+
+    this.navCtrl.pop();
 
   }
 
   addCategory(){
 
     this.booking.addCategory(this.catergory);
-    this.navCtrl.setRoot('CatPage');
 
+    this.catergory.name= "";
 
   }
+
+
 
 }

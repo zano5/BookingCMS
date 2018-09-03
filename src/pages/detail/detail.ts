@@ -231,6 +231,16 @@ this.booking.viewBooking().subscribe(data=>{
   }
 
 
+  itemSelected(category){
+
+
+
+    var deviceModal = this.modalCtrl.create('ViewCategoryPage', {cat: category});
+    deviceModal.present();
+
+  }
+
+
 
 
 

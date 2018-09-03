@@ -1,21 +1,4 @@
-page-cat {
-
-  .menu{
-    display: block !important;
-  }
-
-
-
-  ion-list{
-
-    font-size:28sp;
-  }
-
-
-  ion-icon {
-    font-size: 30px; //Preferred size here
-    margin-left: 10px;
-  }
+page-device-type {
 
 
   .border{
@@ -33,5 +16,9 @@ page-cat {
 
 
 
+ion-icon {
+  font-size: 30px; //Preferred size here
+  margin-left: 10px;
+}
 
 }
