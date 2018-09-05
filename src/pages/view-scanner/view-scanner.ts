@@ -32,9 +32,16 @@ export class ViewScannerPage {
     console.log('ionViewDidLoad ViewScannerPage');
   }
 
-  back(){
+
+
+  quit(){
+
+
+    //this.navParams.get("parentPage").someFnToUpdateParent();
+
     this.navCtrl.pop();
   }
+
 
 
 

@@ -1,5 +1,5 @@
 <!--
-  Generated template for the AddDeviceTypesPage page.
+  Generated template for the UpdateDeviceTypePage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,12 +7,12 @@
 <ion-header>
 
   <ion-navbar color="secondary">
-    <ion-title>Add Device Type</ion-title>
+    <ion-title>Update Device Type</ion-title>
+
 
     <ion-buttons start>
         <button ion-button icon-only clear   (click)="quit()"><ion-icon ios="ios-close" md="md-close"></ion-icon></button>
       </ion-buttons>
-
   </ion-navbar>
 
 </ion-header>
@@ -20,12 +20,14 @@
 
 <ion-content padding>
 
-<ion-item>
-  <ion-label floating> Name </ion-label>
 
-  <ion-input type="text" [(ngModel)]="devType"></ion-input>
-</ion-item>
+  <ion-item>
+    <ion-label flaoting>Device Type</ion-label>
+    <ion-input type="text" [(ngModel)]="type"></ion-input>
+  </ion-item>
 
-  <button ion-button block (click)="AddDeviceTypes()">Add</button>
+
+
+  <button ion-button block (click)="update()">Update</button>
 
 </ion-content>

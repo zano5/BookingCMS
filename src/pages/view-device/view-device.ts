@@ -37,7 +37,7 @@ export class ViewDevicePage {
   AddDevice(){
 
 
-    let deviceModal = this.modalCtrl.create("AddDevicePage");
+    let deviceModal = this.modalCtrl.create("AddDevicePage", {parentPage: this});
    deviceModal.present();
 
 
@@ -50,7 +50,7 @@ export class ViewDevicePage {
   update(device)
   {
 
-    var deviceModal = this.modalCtrl.create("UpdateDevicePage",{dev:device});
+    var deviceModal = this.modalCtrl.create("UpdateDevicePage",{dev:device,parentPage: this});
     deviceModal.present();
   }
 
@@ -93,15 +93,33 @@ presentDeleted(device) {
 
 
       },
+    },
+    {
+
+      text: 'No',
+      role: '',
+      handler: () => {
+
+
+
+
+      },
     }]
   });
   alert.present();
 }
 
 
-home(){
 
-  this.navCtrl.setRoot('MenuPage');
+someFnToUpdateParent()
+{
+
+  this.deviceList=[];
+  this.booking.getDevices().subscribe(data=>{
+
+    this.deviceList = data;
+
+  })
 }
 
 }

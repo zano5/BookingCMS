@@ -69,4 +69,12 @@ export class UpdateDevicePage {
     });
     alert.present();
   }
+
+
+  quit()
+  {
+    this.navParams.get("parentPage").someFnToUpdateParent();
+
+    this.navCtrl.pop();
+  }
 }

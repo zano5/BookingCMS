@@ -87,13 +87,15 @@ export class AddDevicePage {
     })
   }
 
-  addEnd(){
-    this.navCtrl.pop();
-  }
+
 
   quit(){
 
-    this.navCtrl.setRoot('ViewDevicePage');
+
+
+    this.navParams.get("parentPage").someFnToUpdateParent();
+
+    this.navCtrl.pop();
 
   }
 
@@ -125,6 +127,10 @@ export class AddDevicePage {
     //this.presentAlert();
 
     //this.device.reset();
+
+
+    this.device.reset()
+
 
 
   }

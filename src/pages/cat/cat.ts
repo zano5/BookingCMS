@@ -18,6 +18,7 @@ export class CatPage {
 
   categoryList;
   deviceList;
+  count =0;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private booking: BookingProvider,public modalCtrl: ModalController, private menu : MenuController, private alertCtrl : AlertController) {
@@ -168,6 +169,63 @@ presentAlert(category) {
   });
   alert.present();
 }
+
+
+deviceCheck(cat)
+{
+
+
+  for(let device of this.deviceList)
+  {
+
+      if(device.categoryId ==  cat.id){
+        this.count +=1;
+      }
+
+  }
+
+
+  if(this.count ==0)
+  {
+
+        this.presentAlert(cat);
+
+  }else{
+
+    this.available(this.count);
+    this.count = 0;
+
+  }
+
+}
+
+
+available(count) {
+  let alert = this.alertCtrl.create({
+    title: 'Available Devices',
+    subTitle: 'There are ' + count + ' devices attached to the category' ,
+    buttons: [
+    {
+        text: 'Dismiss',
+        role: 'cancel',
+        handler: () => {
+
+
+
+        }
+      }
+        ]
+  });
+  alert.present();
+}
+
+
+
+
+
+
+
+
 
 
 }

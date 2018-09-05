@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { BookingProvider } from '../../providers/booking/booking';
 
 /**
  * Generated class for the ViewUsersPage page.
@@ -15,11 +16,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ViewUsersPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  adminList;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private booking: BookingProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewUsersPage');
+
+    this.booking.getAdmins().subscribe(data=>
+    {
+
+      this.adminList = data;
+      console.log(this.adminList);
+
+    })
+  }
+
+  addUser(){
+
   }
 
 }

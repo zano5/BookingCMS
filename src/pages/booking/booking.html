@@ -33,26 +33,40 @@
 
 
 
+                  <ion-row class ="border">
+                    <ion-col id="heading">
+                      Project Name:
+                    </ion-col>
+
+                    <ion-col id="heading">
+                      Return Date
+                    </ion-col>
+
+                    <ion-col id="heading">  Approval Status:</ion-col>
+                  </ion-row>
+
 
 
                 <ion-row  *ngFor="let booking of notAcceptedList">
 
-                 <ion-col col-4>
-                   Project Name: {{booking.project}}
+                 <ion-col col-4 id="heading1">
+                 {{booking.project}}
                  </ion-col>
 
 
 
-                 <ion-col col-4>
-                   Return Date {{booking.returnDate | date: 'dd/MM/yyyy H:mm' }}
+                 <ion-col col-4 id="heading1">
+                  {{booking.returnDate | date: 'dd/MM/yyyy H:mm' }}
                   </ion-col>
 
 
-                  <ion-col col-4>
-                  Approval Status:{{booking.approved }}
+                  <ion-col col-4 *ngIf="booking.approved == true" id="heading1">
+                      <p>Yes</p>
                   </ion-col>
 
-
+                  <ion-col col-4 *ngIf="booking.approved == false" id="heading1">
+                    <p>No</p>
+                </ion-col>
 
                 </ion-row>
 
@@ -65,26 +79,40 @@
                <ion-list>
 
                   <ion-list-header style="text-size:2em">
+
                       Accepted Requests
                   </ion-list-header>
 
 
+                  <ion-row class ="border">
+                    <ion-col col-4 id="heading">
+                        Project Name:
+                    </ion-col >
+                    <ion-col col-4 id="heading"> Return Date </ion-col>
+                    <ion-col col-4 id="heading">Approval Status:</ion-col>
+                  </ion-row>
+
+
                   <ion-row *ngFor="let booking of AcceptedList">
 
-                   <ion-col col-4>
-                     Project Name: {{booking.project}}
+                   <ion-col col-4 id="heading1">
+                    {{booking.project}}
                    </ion-col>
 
 
 
-                   <ion-col col-4>
-                     Return Date {{booking.returnDate | date: 'dd/MM/yyyy H:mm' }}
+                   <ion-col col-4 id="heading1">
+                     {{booking.returnDate | date: 'dd/MM/yyyy H:mm' }}
                     </ion-col>
 
 
-                    <ion-col col-4>
-                    Approval Status:{{booking.approved }}
+                    <ion-col col-4 *ngIf="booking.approved == true" id="heading1">
+                        <p>Yes</p>
                     </ion-col>
+
+                    <ion-col col-4 *ngIf="booking.approved == false" id="heading1">
+                      <p>No</p>
+                  </ion-col>
 
 
 

@@ -231,5 +231,76 @@ var value;
   }
 
 
+  deleteDeviceType(deviceType)
+  {
+
+
+    var header = { "headers": {"Content-Type": "application/json"} };
+    return new Promise((resolve, reject) => {
+      this.http.delete(this.apiUrl+'/devicetypes'+'/'+deviceType.id,header)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+
+  updateDeviceType(dev){
+
+    var header = { "headers": {"Content-Type": "application/json"} };
+    return new Promise((resolve, reject) => {
+      this.http.put(this.apiUrl+'/devicetypes'+'/'+dev.id, JSON.stringify(dev),header)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+
+  }
+
+
+  addAdmin(user){
+
+    var header = { "headers": {"Content-Type": "application/json"} };
+    return new Promise((resolve, reject) => {
+      this.http.post(this.apiUrl+'/users/admins', JSON.stringify(user),header)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+
+  }
+
+
+  getAdmins()
+  {
+    return this.http.get(this.apiUrl+'/admins?{"$sort":{"name":1}}');
+  }
+
+
+
+  updateAdmin(data){
+
+    var header = { "headers": {"Content-Type": "application/json"} };
+    return new Promise((resolve, reject) => {
+      this.http.put(this.apiUrl+'/users/admins'+'/'+data.id, JSON.stringify(data),header)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+
+  }
+
+
+
+
+
 
 }

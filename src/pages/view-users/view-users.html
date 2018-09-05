@@ -6,13 +6,37 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
-    <ion-title>ViewUsers</ion-title>
+  <ion-navbar color="secondary">
+    <ion-title>View Users</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+
+  <div>
+
+    <h1 style="text-align: center"> Admins</h1>
+
+  </div>
+
+
+  <ion-row class ="border">
+    <ion-col id="heading">name</ion-col>
+    <ion-col id="heading">Email</ion-col>
+
+    <ion-col>
+        <button ion-button icon-only clear (click)="addUser()" color="secondary"> <ion-icon ios="ios-add" md="md-add"></ion-icon></button>
+    </ion-col>
+
+  </ion-row>
+
+
+  <ion-row *ngFor="let admin of adminList">
+      <ion-col id="heading1">{{admin.name}}</ion-col>
+      <ion-col id="heading1">{{admin.username}}</ion-col>
+  </ion-row>
 
 </ion-content>
